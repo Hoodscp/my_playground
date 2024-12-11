@@ -50,7 +50,7 @@ export default function Navbar() {
                 href="/about"
                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-black dark:hover:text-white/75 whitespace-nowrap"
               >
-                소개
+                내 소개
               </Link>
             </li>
             <li>
@@ -58,7 +58,7 @@ export default function Navbar() {
                 href="/portfolio"
                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-black dark:hover:text-white/75 whitespace-nowrap"
               >
-                포트폴리오
+                웹 포트폴리오
               </Link>
             </li>
             <li>
@@ -67,6 +67,14 @@ export default function Navbar() {
                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-black dark:hover:text-white/75 whitespace-nowrap"
               >
                 깃허브
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/pdfviewer"
+                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-black dark:hover:text-white/75 whitespace-nowrap"
+              >
+                발표 자료실
               </Link>
             </li>
           </ul>
