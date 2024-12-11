@@ -1,34 +1,26 @@
 'use client'
+import { updateTopic } from '@/actions/topicActions'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 
 interface EditTopicFormProps {
   id: string
-  title: string
-  description: string
+  initialTitle: string
+  initialDescription: string
 }
 
 export default function EditTopicForm({
   id,
-  title,
-  description,
+  initialTitle,
+  initialDescription,
 }: EditTopicFormProps) {
-  const [newTitle, setNewTitle] = useState(title)
-  const [newDescription, setNewDescription] = useState(description)
+  const [title, setTitle] = useState(initialTitle)
+  const [description, setDescription] = useState(initialDescription)
   const router = useRouter()
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
-      const res = await fetch(`/api/topics/${id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify({ newTitle, newDescription }),
-      })
-      if (!res.ok) {
-        throw new Error('토픽 업데이트에 실패했습니다.')
-      }
+      await updateTopic(id, title, description)
       router.push('/')
       router.refresh()
     } catch (error) {
@@ -36,30 +28,33 @@ export default function EditTopicForm({
     }
   }
   return (
-    <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
-      <h1 className="text-2xl">토픽 수정</h1>
+    <form
+      className="max-w-4xl mx-auto flex flex-col gap-3 dark:bg-gray-900"
+      onSubmit={handleSubmit}
+    >
+      <h1 className="text-2xl dark:text-white">게시글 수정</h1>
       <input
         type="text"
-        className="border border-sky-800 p-4"
-        placeholder="토픽 제목"
+        className="border border-gray-500 p-4 bg-white dark:bg-gray-800 dark:text-white dark:border-gray-600"
+        placeholder="게시글 제목"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setNewTitle(e.target.value)
+          setTitle(e.target.value)
         }
-        value={newTitle}
+        value={title}
       />
       <textarea
-        className="border border-sky-800 p-4 h-32"
-        placeholder="토픽 설명"
+        className="border border-gray-500 p-4 h-32 bg-white dark:bg-gray-800 dark:text-white dark:border-gray-600"
+        placeholder="본문 내용"
         onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-          setNewDescription(e.target.value)
+          setDescription(e.target.value)
         }
-        value={newDescription}
+        value={description}
       />
       <button
-        className="bg-sky-700 text-sky-400 font-bold px-6 py-3 w-fit rounded-md hover:bg-sky-900"
+        className="bg-gray-300 text-gray-800 font-bold px-6 py-3 w-fit rounded-md hover:bg-gray-500 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600"
         type="submit"
       >
-        토픽 수정
+        게시글 수정
       </button>
     </form>
   )

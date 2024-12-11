@@ -8,5 +8,6 @@ const topicSchema = new Schema(
     timestamps: true,
   }
 )
-const Topic = mongoose.models.Data || mongoose.model('Data', topicSchema)
+const Topic =
+  mongoose.models.MYBLOG_Topic || mongoose.model('MYBLOG_Topic', topicSchema)
 export default Topic
