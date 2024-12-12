@@ -18,6 +18,11 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: '웹이추',
   description: 'Create, Read, Update, and Delete in MongoDB',
+  icons: {
+    icon: '/favicon.ico',
+    // 선택적으로 다양한 크기의 아이콘 추가 가능
+    shortcut: '/favicon-16x16.png',
+  },
 }
 
 export default function RootLayout({
