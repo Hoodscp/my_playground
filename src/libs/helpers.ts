@@ -6,12 +6,8 @@ export interface Topic {
   updatedAt: string
 }
 
-export function convertDocToObj(doc: Topic) {
-  return {
-    _id: doc._id.toString(),
-    title: doc.title,
-    description: doc.description,
-    createdAt: doc.createdAt || '',
-    updatedAt: doc.updatedAt || '',
-  }
+export function convertDocToObj(doc: any) {
+  const converted = JSON.parse(JSON.stringify(doc))
+  console.log('Converted document:', converted)
+  return converted
 }

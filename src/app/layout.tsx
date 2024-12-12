@@ -3,6 +3,7 @@ import localFont from 'next/font/local'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import { NextAuthProvider } from '@/components/Providers'
+import { auth } from '@/auth'
 
 const geistSans = localFont({
   src: './fonts/DungGeunMo.woff',
@@ -25,17 +26,19 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const session = await auth()
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased font-[family-name:var(--font-geist-mono)] `}
       >
-        <NextAuthProvider>
+        <NextAuthProvider session={session}>
           <Navbar />
           <div className="flex justify-between items-start gap-4">
             {/* 왼쪽 광고 배너 */}
