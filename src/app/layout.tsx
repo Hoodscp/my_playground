@@ -4,6 +4,7 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 import { NextAuthProvider } from '@/components/Providers'
 import { auth } from '@/auth'
+import Image from 'next/image'
 
 const geistSans = localFont({
   src: './fonts/DungGeunMo.woff',
@@ -43,9 +44,36 @@ export default async function RootLayout({
           <div className="flex justify-between items-start gap-4">
             {/* 왼쪽 광고 배너 */}
             <div className="my-4 hidden lg:block w-[160px] h-[600px] sticky top-4">
-              <div className=" rounded-lg shadow-sm border border-gray-200 w-full h-full flex items-center justify-center">
-                광고 영역
-              </div>
+              <a
+                href="https://2024-2-team-library.vercel.app/"
+                className="block rounded-lg shadow-sm border border-gray-200 w-full h-full hover:bg-gray-50 transition-colors duration-200"
+              >
+                <div className="h-full flex flex-col items-center justify-center p-4 text-center">
+                  <Image
+                    src="/kirby.png"
+                    alt="Kirby"
+                    width={100}
+                    height={100}
+                    className="mb-4"
+                  />
+                  <p className="text-lg font-bold text-blue-600 mb-2">
+                    🎉 팀 페이지 구경하기
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    우리 팀원들의 이야기가 궁금하다면?
+                  </p>
+                  <p className="text-sm font-bold text-blue-500 mt-4 animate-bounce">
+                    👆 클릭!
+                  </p>
+                  <Image
+                    src="/kirby.png"
+                    alt="Kirby"
+                    width={100}
+                    height={100}
+                    className="mt-4"
+                  />
+                </div>
+              </a>
             </div>
 
             {/* 메인 콘텐츠 */}
@@ -64,9 +92,34 @@ export default async function RootLayout({
 
             {/* 오른쪽 광고 배너 */}
             <div className="my-4 hidden lg:block w-[160px] h-[600px] sticky top-4">
-              <div className=" rounded-lg shadow-sm border border-gray-200 w-full h-full flex items-center justify-center">
-                광고 영역
-              </div>
+              <a
+                href="https://2024-2-team-library.vercel.app/"
+                className="block rounded-lg shadow-sm border border-gray-200 w-full h-full hover:bg-gray-50 transition-colors duration-200"
+              >
+                <div className="h-full flex flex-col items-center justify-center p-4 text-center">
+                  <Image
+                    src="/kirby.png"
+                    alt="Kirby"
+                    width={100}
+                    height={100}
+                    className="mb-4"
+                  />
+                  <p className="text-lg font-bold text-blue-600 mb-2">
+                    💫 팀원 소개
+                  </p>
+                  <p className="text-sm text-gray-600">웹이추를 만든 사람들</p>
+                  <p className="text-sm font-bold text-blue-500 mt-4 animate-bounce">
+                    👆 여기를 클릭!
+                  </p>
+                  <Image
+                    src="/kirby.png"
+                    alt="Kirby"
+                    width={100}
+                    height={100}
+                    className="mt-4"
+                  />
+                </div>
+              </a>
             </div>
           </div>
         </NextAuthProvider>
